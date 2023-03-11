@@ -14,6 +14,17 @@ db.connect((err) => {
   }
   console.log('MySql Connected...');
 });
+
+app.get('/post',(req,res)=>{
+  db.query('SELECT * FROM posts ', async (err, result) => {
+    if (result) {
+        res.status(200).send(result)
+    }
+    else {
+        res.status(400).send('data not found')
+    }
+});
+})
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!')
 })
