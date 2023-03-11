@@ -1,7 +1,19 @@
 const express = require('express')
+const mysql = require('mysql')
 const app = express()
 const port = 3000
-
+const db = mysql.createConnection({
+  host: 'bnorca3wrur2z3r9ujv2-mysql.services.clever-cloud.com',
+  user: 'uv0lgzccxmpx7yyt',
+  password: 'wzBvDMhWupTWDJk1KvP3',
+  database: 'bnorca3wrur2z3r9ujv2'
+});
+db.connect((err) => {
+  if (err) {
+      throw err;
+  }
+  console.log('MySql Connected...');
+});
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!')
 })
